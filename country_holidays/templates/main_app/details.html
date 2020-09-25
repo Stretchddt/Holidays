@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Search">
+    </form>
+
+    <br>
+
+    <h1>Holidays for - {{ country }}</h1>
+
+    <br>
+
+    {% for h in holidays %}
+        <div class="card">
+            <h1 class="card-header">{{ h.holiday }}</h1>
+            <div class="card-body">
+                <h2 class="card-title">{{ h.description }}</h2>
+                <h4 class="card-text">{{ h.type }}</h4>
+                <p class="card-text">Locations - {{ h.location }}</p>
+                <p class="card-text">States - {{ h.states }}</p>
+            </div>
+            <div class="card-footer">
+                <p>{{ h.date }}</p>
+            </div>
+        </div>
+        <br>
+    {% endfor %}
+{% endblock content %}
