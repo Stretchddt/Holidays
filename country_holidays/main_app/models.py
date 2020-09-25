@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Country(models.Model):
-    country = models.CharField(max_length=5)
+    country = models.CharField(max_length=2)
     year = models.CharField(max_length=20)
 
     def __str__(self):
