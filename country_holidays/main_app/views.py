@@ -1,5 +1,6 @@
 import requests
 import os
+from requests_html import HTMLSession
 from django.shortcuts import render
 from .forms import SearchCountry
 from .models import Country
@@ -8,6 +9,9 @@ from .forms import SearchHolidays
 
 # Create your views here.
 def home(request):
+    session = HTMLSession()
+    URL = 'https://calendarific.com/'
+    r = session.get(URL)
     return render(request, 'main_app/home.html')
 
 def holiday_search(request):
