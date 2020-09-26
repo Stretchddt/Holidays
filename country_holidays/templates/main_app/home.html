@@ -1,5 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Welcome to Holidays!</h1>
+    <h1 class="text-center text-upper">Welcome to Holidays!</h1>
+
+    <br>
+
+    <p class="text-center text-upper">At Holidays you can search for a country and see all the holidays in that country. To search you a country please use one the ISO codes below!</p>
+
+    {% for c in countries %}
+        <p class="text-success text-center">{{ c }}</p>
+        <br>
+    {% endfor %}
 {% endblock content %}

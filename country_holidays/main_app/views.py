@@ -9,10 +9,26 @@ from .forms import SearchHolidays
 
 # Create your views here.
 def home(request):
+
     session = HTMLSession()
     URL = 'https://calendarific.com/'
     r = session.get(URL)
-    return render(request, 'main_app/home.html')
+
+    country_table = r.html.find('.col-md-4')
+    countries = []
+
+    for i in country_table:
+        countries.append(i.text)
+    del countries[0]
+    del countries[1]
+    del countries[2]
+    del countries[3]
+    del countries[0]
+
+    context = {
+        'countries': countries
+    }
+    return render(request, 'main_app/home.html', context)
 
 def holiday_search(request):
 
